@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { UserBusinees } from "../business/UserBusiness";
+import { UserBusiness } from "../business/UserBusiness";
 import { UserInputDTO } from "../model/User";
 
 export class UserController {
@@ -14,7 +14,7 @@ export class UserController {
                 participation
             }
 
-            const userBusiness = new UserBusinees()
+            const userBusiness = new UserBusiness()
             const message = await userBusiness.user(input)
 
             res.status(200).send({ message })
@@ -32,7 +32,7 @@ export class UserController {
     async getAlluser(req: Request, res: Response) {
         try {
 
-            const userBusiness = new UserBusinees();
+            const userBusiness = new UserBusiness();
             const allUsers = await userBusiness.alluser();
 
             res.status(200).send(allUsers)
